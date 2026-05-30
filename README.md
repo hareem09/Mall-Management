@@ -4,7 +4,7 @@
 
 The Mall Management System is a modern and responsive web application developed using React JS. The system is designed to manage mall operations efficiently, including brands, shops, employees, attendance, task assignments, and analytics dashboards.
 
-This project focuses on frontend development using React JS, Redux Toolkit, React Router DOM, Bootstrap, and mock JSON data. It follows a scalable component-based architecture and provides a professional admin panel experience.
+This project focuses on frontend development using React JS, Redux Toolkit, React Router DOM, Tailwind css. It follows a scalable component-based architecture and provides a professional admin panel experience.
 
 ---
 
