@@ -1,7 +1,8 @@
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import img from '../../assets/images.png'
-
+import { useSelector, useDispatch } from "react-redux";
+import { SIGNUP } from "../../redux/action/action";
 function Signup() {
     const [form, setForm] = useState({
     fName:'',
@@ -9,6 +10,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const dispatch = useDispatch()
   const navigate=useNavigate()
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -54,6 +56,7 @@ function Signup() {
     localStorage.setItem("user", JSON.stringify(form));
 
     setSuccess(true);
+    dispatch(signup(form))
     setMessage("Signed up successfully");
 
     navigate("/login");
@@ -67,11 +70,11 @@ function Signup() {
 };
     return (
       <>
-        <main className="w-full h-screen flex  text-white">
-          <section className="w-2/3 h-full ">
+        <main className="w-full h-screen md:flex  text-white">
+          <section className="md:w-2/3 md:h-full ">
             <img src={img} alt="" className="w-full h-full " />
           </section>
-          <section className="w-1/2 h-full flex flex-col justify-center items-center  bg-sky-950 border-2 border-gray-400 rounded-2xl">
+          <section className="md:w-1/2 h-full flex flex-col justify-center items-center  bg-sky-950 border-2 border-gray-400 rounded-2xl">
             <h2 className="text-5xl font-semibold  m-10">Sign Up</h2>
             <form className="w-2/3 h-2/3 flex flex-col justify-center items-center gap-2 " onSubmit={handleSubmit}>
               <div className="flex flex-col m-5 gap-2">
