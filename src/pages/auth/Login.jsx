@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { LOGIN } from "../../redux/action/action";
 import img from "../../assets/images.png";
 import { useNavigate } from "react-router-dom";
 function Login() {
@@ -6,7 +8,7 @@ function Login() {
   email: "",
   password: "",
 });
-
+const dispatch = useDispatch();
 const [success, setSuccess] = useState(false);
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
@@ -55,7 +57,12 @@ const handleSubmit = async (e) => {
     }
 
     // success
-    localStorage.setItem('USER',form)
+   dispatch(login(form))
+  localStorage.setItem(
+    "USER",
+    JSON.stringify(form)
+  );
+
     setSuccess(true);
     setMessage("Logged successfully");
     navigate('/dashboard')
@@ -69,11 +76,11 @@ const handleSubmit = async (e) => {
 };
   return (
     <>
-      <main className="w-full h-screen flex  text-white">
-        <section className="w-2/3 h-full ">
+      <main className="w-full h-screen md:flex  text-white">
+        <section className="md:w-2/3 md:h-full ">
           <img src={img} alt="" className="w-full h-full " />
         </section>
-        <section className="w-1/2 h-full flex flex-col justify-center items-center  bg-sky-950 border-2 border-gray-400 rounded-2xl">
+        <section className="md:w-1/2 h-full flex flex-col justify-center items-center  bg-sky-950 border-2 border-gray-400 rounded-2xl">
           <h2 className="text-5xl font-semibold  m-10">Login</h2>
           <form className="w-2/3 h-2/3 flex flex-col justify-center items-center gap-10 " onSubmit={handleSubmit}>
             <div className="flex flex-col m-5 gap-4">
